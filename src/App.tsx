@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Option1} from "./selects/option1";
+import {Option2} from "./selects/option2";
+import {Option3} from "./selects/option3";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+const App = () => {
+  return(
+      <>
+      {/*    <Option1/>
+          <hr/>
+          <Option2/>
+          <hr/>*/}
+          <Option3/>
+      </>
+  )
+
+};
 
 export default App;
