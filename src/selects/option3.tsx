@@ -38,11 +38,12 @@ export const Option3 = ()=>{
 
 
     useEffect(() => {
-        let numberToDisplay:number = 0;
-        if (selectActualWidth > 600 ){
+        let numberToDisplay:number;
+        if (selectActualWidth > 1500 ){
+            numberToDisplay = 8
+        }else if(selectActualWidth > 600){
             numberToDisplay = 5
-        }
-        else if(selectActualWidth > 450){
+        } else if(selectActualWidth > 450){
             numberToDisplay = 4
         }else if (selectActualWidth < 300 ){
             numberToDisplay = 1
@@ -54,7 +55,7 @@ export const Option3 = ()=>{
     const calculateItemWidth = (): number => {
         let itemWidth:number;
         if(optionsSelectedCount < selectMaxDisplay){
-            itemWidth = (selectActualWidth/optionsSelectedCount)-20
+            itemWidth = (selectActualWidth/optionsSelectedCount)-50
         }else{
             itemWidth = (selectActualWidth/selectMaxDisplay)-50
         }
@@ -126,7 +127,7 @@ export const Option3 = ()=>{
 
 
     return (
-        <p style={{width: "35%"}} >
+        <p style={{width: "100%"}} >
             <p>Select width : <b>{selectActualWidth}</b></p>
             <p>Maximum selected options to display: <b>{selectMaxDisplay}</b></p>
             <p>Current selected options: <b>{optionsSelectedCount}</b></p>

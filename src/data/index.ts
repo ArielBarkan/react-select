@@ -1,7 +1,7 @@
 // Sample options
 export const data1 = Array.from({ length: 20 }, (_, i) => ({
     value: `option-${i + 1}`,
-    label: `Option ${i + 1}`,
+    label: `Option  ${i + 1}`,
 }));
 export const data2  =[
     {
