@@ -35,20 +35,33 @@ export const Option3 = ()=>{
     }, []);
 
 
+
+
     useEffect(() => {
-   let numberToDisplay:number = 0;
-   if (selectActualWidth > 600 ){
-        numberToDisplay = 5
-    }
-          else if(selectActualWidth > 450){
-              numberToDisplay = 4
-          }else if (selectActualWidth < 300 ){
-              numberToDisplay = 1
-          }else {
-              numberToDisplay = 3
-          }
-          setSelectMaxDisplay(numberToDisplay)
+        let numberToDisplay:number = 0;
+        if (selectActualWidth > 600 ){
+            numberToDisplay = 5
+        }
+        else if(selectActualWidth > 450){
+            numberToDisplay = 4
+        }else if (selectActualWidth < 300 ){
+            numberToDisplay = 1
+        }else {
+            numberToDisplay = 3
+        }
+        setSelectMaxDisplay(numberToDisplay)
     }, [selectActualWidth]);
+    const calculateItemWidth = (): number => {
+        let itemWidth:number;
+        if(optionsSelectedCount < selectMaxDisplay){
+            itemWidth = (selectActualWidth/optionsSelectedCount)-20
+        }else{
+            itemWidth = (selectActualWidth/selectMaxDisplay)-50
+        }
+
+ return itemWidth
+    }
+
 // Custom MultiValue to hide it for the remaining options
     const MultiValue = (props: any) => {
         const { index, data, selectProps } = props;
@@ -92,9 +105,7 @@ export const Option3 = ()=>{
     const customStyles: StylesConfig = {
         multiValue:(base) =>({
             ...base,
-            width: `${(selectActualWidth/selectMaxDisplay)-50}px`,
-            display:"flex",
-            justifyContent: "space-between",
+            maxWidth: `${calculateItemWidth()}px`,
         }),
         valueContainer: (base) => ({
             ...base,
@@ -117,7 +128,8 @@ export const Option3 = ()=>{
     return (
         <p style={{width: "35%"}} >
             <p>Select width : <b>{selectActualWidth}</b></p>
-            <p>Selected options to display: <b>{selectMaxDisplay}</b></p>
+            <p>Maximum selected options to display: <b>{selectMaxDisplay}</b></p>
+            <p>Current selected options: <b>{optionsSelectedCount}</b></p>
             <Select
                 ref={refToMyBeautifulSelect}
                 id={"myLovelySelect"}

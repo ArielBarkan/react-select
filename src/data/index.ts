@@ -26,7 +26,7 @@ export const data2  =[
     },
     {
         value: "ede5d55f-501a-4aa9-aa17-e264fef08978",
-        label: "very important role",
+        label: "very important role with long name and big money (outrageous money, not kidding) ",
         color: "#b721a0"
     }
 ];
@@ -77,5 +77,5 @@ export const data3  =[
         color: "#b721a0"
     }
 ];
-const data = data3
+const data = data2
 export {data}

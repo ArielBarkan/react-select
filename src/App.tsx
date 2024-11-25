@@ -7,10 +7,10 @@ import {Option3} from "./selects/option3";
 const App = () => {
   return(
       <>
-       <Option1/>
+  {/*     <Option1/>
           <hr/>
           <Option2/>
-          <hr/>
+          <hr/>*/}
           <Option3/>
       </>
   )
