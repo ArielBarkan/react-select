@@ -72,6 +72,7 @@ export const Option2 = ()=>{
 
     return (
         <p style={{width: "450px"}}>
+            <u><h3>Option 2</h3></u>
             <Select
                 id={"hello"}
                 options={data}
@@ -82,5 +83,5 @@ export const Option2 = ()=>{
                 hideSelectedOptions={false}
             />
         </p>
-            );
-            }
+    );
+}

@@ -70,16 +70,17 @@ export const Option1 = ()=>{
 
 
     return (
-<p style={{ width:"400px"}}>
-        <Select
-            id={"hello"}
-            options={data}
-            isMulti
-            components={{ MultiValue, ValueContainer }}
-            onChange={handleInputChange}
-            styles={customStyles}
-            hideSelectedOptions={false}
-        />
-</p>
+        <p style={{width: "400px"}}>
+            <u><h3>Option 1</h3></u>
+            <Select
+                id={"hello"}
+                options={data}
+                isMulti
+                components={{MultiValue, ValueContainer}}
+                onChange={handleInputChange}
+                styles={customStyles}
+                hideSelectedOptions={false}
+            />
+        </p>
     );
 }

@@ -26,7 +26,47 @@ export const data2  =[
     },
     {
         value: "ede5d55f-501a-4aa9-aa17-e264fef08978",
-        label: "very important role with long name and big money (outrageous money, not kidding) ",
+        label: "very important role with long name",
+        color: "#b721a0"
+    },
+    {
+        value: "ede5d55f-501a-4aa9-aa17-e264feg08978",
+        label: "Admin for you",
+        color: "#b721a0"
+    },
+    {
+        value: "ede5d55f-501a-4aa9-da17-e264fef08978",
+        label: "bla bla bla",
+        color: "#b721a0"
+    },
+    {
+        value: "ede5d55f-501a-4aw9-aa17-e264fef08978",
+        label: "Visitor",
+        color: "#b721a0"
+    },
+    {
+        value: "ede5d55f-501a-4aw9-aa17-e2645ef08978",
+        label: "Actor",
+        color: "#b721a0"
+    },
+    {
+        value: "edead55f-501a-4aw9-aa17-e264fef08978",
+        label: "Nudnik",
+        color: "#b721a0"
+    },
+    {
+        value: "ede5655f-501a-4aw9-aa17-e264fef08978",
+        label: "Social media specialist",
+        color: "#b721a0"
+    },
+    {
+        value: "edekd55f-501a-4aw9-aa17-e264fef08978",
+        label: "Investor",
+        color: "#b721a0"
+    },
+    {
+        value: "ede5d55f-501a-4aw9-aa17-e2s4fef08978",
+        label: "Private detective",
         color: "#b721a0"
     }
 ];
