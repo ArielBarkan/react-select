@@ -38,8 +38,9 @@ export const Option4 = ()=>{
 
 
     const updateSelectWidth = ()=> {
-        setSelectActualWidth(document.getElementById("myLovelySelect")?.offsetWidth || 0)
-        calculateMaxCharacters(document.getElementById("myLovelySelect")?.offsetWidth || 0)
+        const width:number = document.getElementById("myLovelySelect")?.offsetWidth || 0
+        setSelectActualWidth(width)
+        calculateMaxCharacters(width)
 
     }
 
