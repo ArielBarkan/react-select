@@ -85,8 +85,12 @@ export const Option3 = ()=>{
         const hiddenCount = optionsSelectedCount - selectMaxDisplay;
 
 
+        const  handleClick = (event:any) =>{
+            console.log({event})
+        }
+
         return (
-            <components.ValueContainer {...props}>
+            <components.ValueContainer {...props} onClick={handleClick}>
                 {children}
                 {( hiddenCount > 0 && (
                     <span
@@ -139,6 +143,7 @@ export const Option3 = ()=>{
                 onChange={handleInputChange}
                 styles={customStyles}
                 hideSelectedOptions={false}
+                closeMenuOnSelect={false}
             />
         </p>
             );
