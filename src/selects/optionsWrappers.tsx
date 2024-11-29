@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 
 //   marginLeft: "8px", fontSize: "14px", color: "#FFF" , backgroundColor:"#628fbb", borderRadius: "5px" , padding: "5px", width:"20px", justifySelf: "self-end"
-const Counter = styled.p`
+const Counter = styled.p<any>`
+    visibility: ${(props) => (props.isMaxReached ? "visible" : "hidden")};;
     background-color: #628fbb;
     border-radius: 5px;
-    width: 15px;
+    width: 20px;
+    height: 20px;
     padding: 5px;
     color: #fff;
     

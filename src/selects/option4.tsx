@@ -12,12 +12,15 @@ export const Option4 = ()=>{
     const [optionsSelected, setOptionsSelected] = useState<[]>([]);
     const [selectActualWidth, setSelectActualWidth] = useState<number>(0);
     const [selectMaxDisplay, setSelectMaxDisplay] = useState<number>(3);
+    const [isMaxReached, setIsMaxReached] = useState<boolean>(false);
     const refToMyBeautifulSelect = useRef(null)
 
     const handleInputChange = (options:any)=>{
 
         setOptionsSelectedCount(options.length);
         setOptionsSelected(options);
+
+        setIsMaxReached(options.length - selectMaxDisplay > 0)
     }
 
 
@@ -104,12 +107,14 @@ export const Option4 = ()=>{
     /*********/
 
 
+
     return (
         <p style={{width: "40%"}} >
             <u><h3>Option 4</h3></u>
             <p>Select width : <b>{selectActualWidth}</b></p>
             <p>Maximum selected options to display: <b>{selectMaxDisplay}</b></p>
             <p>Current selected options: <b>{optionsSelectedCount}</b></p>
+            <p>isMaxReached: <b>-{isMaxReached.toString()}-</b></p>
             <SelectWrapper>
             <Select
                 ref={refToMyBeautifulSelect}
@@ -123,7 +128,7 @@ export const Option4 = ()=>{
                 closeMenuOnSelect={false}
             />
 
-            <Counter title={generateTitle(optionsSelected)}>{optionsSelectedCount - selectMaxDisplay}</Counter>
+            <Counter title={generateTitle(optionsSelected)}{...{isMaxReached}}>+{optionsSelectedCount - selectMaxDisplay}</Counter>
             </SelectWrapper>
         </p>
     );
