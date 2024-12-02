@@ -2,8 +2,9 @@ import React, {useEffect, useRef, useState} from "react";
 import Select, {components, SelectInstance, StylesConfig, Options} from "react-select";
 import {data} from "../data";
 import {generateTitle} from "../utils";
+import {Counter, SelectWrapper, Label} from "./optionsWrappers";
 
-export const Option5 = ()=>{
+export const Option6 = ()=>{
 
     /*********/
 
@@ -11,13 +12,15 @@ export const Option5 = ()=>{
     const [optionsSelected, setOptionsSelected] = useState<[]>([]);
     const [selectActualWidth, setSelectActualWidth] = useState<number>(0);
     const [selectMaxDisplay, setSelectMaxDisplay] = useState<number>(3);
+    const [isMaxReached, setIsMaxReached] = useState<boolean>(false);
     const refToMyBeautifulSelect = useRef(null)
 
     const handleInputChange = (options:any)=>{
 
-
         setOptionsSelectedCount(options.length);
         setOptionsSelected(options);
+
+        setIsMaxReached(options.length - selectMaxDisplay > 0)
     }
 
 
@@ -26,7 +29,7 @@ export const Option5 = ()=>{
     }
 
     useEffect(() => {
-       updateSelectWidth()
+        updateSelectWidth()
 
         window.addEventListener('resize', updateSelectWidth);
 
@@ -40,7 +43,7 @@ export const Option5 = ()=>{
 
     useEffect(() => {
         let numberToDisplay:number;
-       if(selectActualWidth > 600){
+        if(selectActualWidth > 600){
             numberToDisplay = 5
         } else if(selectActualWidth > 450){
             numberToDisplay = 3
@@ -59,7 +62,7 @@ export const Option5 = ()=>{
             itemWidth = (selectActualWidth/selectMaxDisplay)-50
         }
 
- return itemWidth
+        return itemWidth
     }
 
 // Custom MultiValue to hide it for the remaining options
@@ -68,48 +71,29 @@ export const Option5 = ()=>{
 
 
         // Only render up to `selectMaxDisplay` items, hide the rest
-        console.log({index})
-        if(index+1 <= selectMaxDisplay){
-            return (
-                <span title={props.children}>
-                <components.MultiValue {...props} />
-            </span>)
-
-        }else if(index+1 === selectMaxDisplay+1){
-            const hiddenCount = optionsSelectedCount - selectMaxDisplay;
-
-            return (
-                <span
-                    id="counter"
-                    style={{
-                        marginLeft: "8px",
-                        fontSize: "14px",
-                        color: "#FFF",
-                        backgroundColor: "#628fbb",
-                        borderRadius: "5px",
-                        padding: "5px",
-                        width: "20px",
-                        justifySelf: "self-end"
-                    }}
-                    title={generateTitle(optionsSelected)}>
-                +{hiddenCount}
-            </span>
-
-            );
-
-        }else{
-            return null
+        if (index >= selectMaxDisplay) {
+            return null;
         }
 
-
-
+        return (
+            <span title={props.children}>
+                <components.MultiValue {...props} />
+            </span>
+        );
     };
 
-
+    const Control = (props: any) => {
+        return (
+            <>
+                <Label isFloating={props.isFocused || props.hasValue}>Select</Label>
+                <components.Control {...props} />
+            </>
+        );
+    };
 
 // Styles to ensure single-line display
     const customStyles: StylesConfig = {
-        multiValue: (base) => ({
+        multiValue:(base) =>({
             ...base,
             maxWidth: `${calculateItemWidth()}px`,
         }),
@@ -129,21 +113,21 @@ export const Option5 = ()=>{
 
 
     /*********/
-const getData = () =>{
-    let options = data
-    return options
-}
+
+
 
     return (
-        <p style={{width: "50%"}} >
-            <u><h3>Option 5</h3></u>
+        <p style={{width: "40%"}} >
+            <u><h3>Option 6</h3></u>
             <p>Select width : <b>{selectActualWidth}</b></p>
             <p>Maximum selected options to display: <b>{selectMaxDisplay}</b></p>
             <p>Current selected options: <b>{optionsSelectedCount}</b></p>
+            <p>isMaxReached: <b>-{isMaxReached.toString()}-</b></p>
+            <SelectWrapper>
             <Select
                 ref={refToMyBeautifulSelect}
                 id={"myLovelySelect"}
-                options={getData()}
+                options={data}
                 isMulti
                 components={{MultiValue}}
                 onChange={handleInputChange}
@@ -151,6 +135,9 @@ const getData = () =>{
                 hideSelectedOptions={false}
                 closeMenuOnSelect={false}
             />
+
+            <Counter title={generateTitle(optionsSelected)}{...{isMaxReached}}>+{optionsSelectedCount - selectMaxDisplay}</Counter>
+            </SelectWrapper>
         </p>
-            );
-            }
+    );
+}

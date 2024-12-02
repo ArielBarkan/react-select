@@ -20,4 +20,17 @@ const SelectWrapper = styled.p`
         flex-grow: 1;
     }
 `
-export {Counter,SelectWrapper}
+
+const Label = styled.label<{ isFloating?: boolean }>`
+    left: 10px;
+    top:-5px;
+    pointer-events: none;
+    //position: absolute;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+
+    top: ${(props) => (props.isFloating ? `5px` : `35%`)};
+    font-size: ${(props) => (props.isFloating ? `0.5rem` : `1rem`)};
+`;
+export {Counter,SelectWrapper, Label}
