@@ -145,7 +145,7 @@ const countTemp :number =props.selectProps.value.length;
             <Select
                 ref={refToMyBeautifulSelect}
                 id={"myLovelySelect"}
-                options={getData()}
+                options={data}
                 defaultValue={data.slice(0, 6)}
                 isMulti
                 components={{MultiValue}}
