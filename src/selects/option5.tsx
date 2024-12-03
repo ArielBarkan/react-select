@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import Select, {components, SelectInstance, StylesConfig, Options} from "react-select";
 import {data} from "../data";
 import {generateTitle} from "../utils";
+import {log} from "node:util";
 
 export const Option5 = ()=>{
 
@@ -62,13 +63,40 @@ export const Option5 = ()=>{
  return itemWidth
     }
 
+// Styles to ensure single-line display
+    const customStyles: StylesConfig = {
+        multiValue: (base) => ({
+            ...base,
+            maxWidth: `${calculateItemWidth()}px`,
+        }),
+        valueContainer: (base) => ({
+            ...base,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+
+        }),
+        control: (base) => ({
+            ...base,
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+        }),
+    };
+
+
+    /*********/
+    const getData = () =>{
+        let options = data
+        return options
+    }
 // Custom MultiValue to hide it for the remaining options
     const MultiValue = (props: any) => {
         const { index, data, selectProps } = props;
-
-
+        console.log(">")
+        console.log(props.selectProps.value.length)
+const countTemp :number =props.selectProps.value.length;
         // Only render up to `selectMaxDisplay` items, hide the rest
-        console.log({index})
+
         if(index+1 <= selectMaxDisplay){
             return (
                 <span title={props.children}>
@@ -76,7 +104,7 @@ export const Option5 = ()=>{
             </span>)
 
         }else if(index+1 === selectMaxDisplay+1){
-            const hiddenCount = optionsSelectedCount - selectMaxDisplay;
+            const hiddenCount = countTemp - selectMaxDisplay;
 
             return (
                 <span
@@ -107,32 +135,6 @@ export const Option5 = ()=>{
 
 
 
-// Styles to ensure single-line display
-    const customStyles: StylesConfig = {
-        multiValue: (base) => ({
-            ...base,
-            maxWidth: `${calculateItemWidth()}px`,
-        }),
-        valueContainer: (base) => ({
-            ...base,
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-
-        }),
-        control: (base) => ({
-            ...base,
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-        }),
-    };
-
-
-    /*********/
-const getData = () =>{
-    let options = data
-    return options
-}
 
     return (
         <p style={{width: "50%"}} >
@@ -144,6 +146,7 @@ const getData = () =>{
                 ref={refToMyBeautifulSelect}
                 id={"myLovelySelect"}
                 options={getData()}
+                defaultValue={data.slice(0, 6)}
                 isMulti
                 components={{MultiValue}}
                 onChange={handleInputChange}
