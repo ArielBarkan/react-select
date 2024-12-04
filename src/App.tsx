@@ -4,6 +4,7 @@ import {Option3} from "./selects/option3";
 import {Option4} from "./selects/option4";
 import {Option5} from "./selects/option5";
 import {Option6} from "./selects/option6";
+import {Option7} from "./selects/option7";
 
 
 
@@ -23,6 +24,8 @@ const App = () => {
           <Option5/>
           {/*<hr/>*/}
 {/*          <Option6/>*/}
+         {/* <Option7/>*/}
+          {/*<hr/>*/}
       </>
   )
 
